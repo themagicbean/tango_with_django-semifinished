@@ -1,0 +1,27 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+		About
+{% endblock %}
+
+{% block body_block %}
+	
+		<h1>Rango says...</h1>
+		<div>
+			this tutorial has been put together by ... <br />
+			<strong>{{ boldmessage }}</strong><br />
+		</div>
+		<div>
+			<img src="{% static "images/dukong.png" %}"
+			     alt="Picture of Kong" /> 
+		</div>
+	
+		<div>
+		<p> visits: {{ visits }} </p>
+		</div>
+		
+
+		
+{% endblock %}
+	

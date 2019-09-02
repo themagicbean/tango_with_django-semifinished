@@ -1,0 +1,31 @@
+<!--passes to template tag -->
+
+<!-- original version, did not pass cat
+<ul>
+{% if cats %}
+	{% for c in cats %}
+		<li><a href="{% url 'show_category' c.slug %}">{{c.name}}</a></li>
+	{% endfor %}
+{% else %}
+	<li> <strong> There are no categories present. </strong> </li>
+{% endif %}
+</ul>
+-->
+
+<!--updated at end of c8, bolds current cat in sidebar list-->
+
+{% for c in cats %}
+	{% if c == act_cat %}
+		<li>
+		<strong>
+			<a href="{% url 'show_category' c.slug %}">{{ c.name }}</a>
+		</strong>
+		</li>
+	{% else %}
+		<li>
+			<a href="{% url 'show_category' c.slug %}">{{ c.name }}</a>
+		</li>
+	{% endif %}
+{% endfor %}
+
+	

@@ -1,0 +1,28 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+<!-- redone in c8 to use template base -->
+
+{% block title_block %}
+	Add a category
+{% endblock %}
+
+{% block body_block %}
+
+		<h1>Add a Category</h1>
+		<div>
+			<form id="category_form" method="post" action="{% url 'add_category' %}">
+			<!-- change per stack on action-->
+				{% csrf_token %}
+				{% for hidden in form.hidden_fields %}
+					{{hidden}}
+				{% endfor %}
+				{% for field in form.visible_fields %}
+					{{ field.errors }}
+					{{ field.help_text }}
+					{{ field }}
+				{% endfor %}
+				<input type="submit" name="submit" value="Create Category" />
+			</form>
+		</div>
+		{% endblock %}

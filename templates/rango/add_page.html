@@ -1,0 +1,39 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+<!--redone in c8 to extend base template-->
+
+{% block title_block %}
+		Add a Page
+		{% endblock %}
+
+{% block body_block %}
+	
+		<body>
+		<h1>Add a Page</h1>
+		
+			{% if category %}
+			<div>	
+			<form id="page_form" method="post" action="{% url 'add_page' category.slug %}">
+			<!-- needed trailing slash on action to avoid runtime/post error.  Not sure why yet.-->
+				{% csrf_token %}
+					
+				{% for hidden in form.hidden_fields %}
+					{{hidden}}
+				{% endfor %}
+				{% for field in form.visible_fields %}
+					{{ field.errors }}
+					{{ field.help_text }}
+					{{ field }}
+				{% endfor %}
+				
+				<input type="submit" name="submit" value="Add Page" />
+			</form>
+			</div>
+			{% else %}
+			<b> A category by this name does not exist</b>
+			<!-- to do: add link to create category here -->
+			<!-- done via the base template in c8 -->
+			{% endif %}
+			
+		{% endblock %}

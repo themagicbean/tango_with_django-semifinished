@@ -1,0 +1,34 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title%} Search {% endblock %}
+
+{% block body_block %}
+<div>
+	<h1>Search with Rango</h1>
+	<br/>
+	<h2>
+	Powered by Google, searches Wikipedia.
+	<br/>
+	MS wanted a credit card number so I didn't use Bing.
+	</h2>
+	
+	<!--
+	<form class="form-inline" id="user_form"
+		method="post" action="{% url 'search' %}>
+		
+		{% csrf_token %}
+		
+		<div class="input-group">
+			<input class="form-control" type="text" size="50"
+				name="query" value="" id="query">
+		</div>
+		<button class="btn btn-primary" type="submit" name="submit"
+			value="Search">Search</button>
+	</form>
+	-->
+
+	<script async src="https://cse.google.com/cse.js?cx=007480975839637426269:zc8v52ag9da"></script>
+<div class="gcse-search"></div>
+</div>
+{% endblock %}

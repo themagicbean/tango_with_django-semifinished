@@ -1,0 +1,69 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+<!--redone in c8 to extend base template-->
+<!--then again in c12 to bootstrap -->
+
+{% block title_block %}
+			Index
+		{% endblock %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+	<h1 class="display-3">Rango says...
+		
+		{% if user.is_authenticated %}
+			howdy {{ user.username }}!
+		{% else %}
+			hey there partner!
+		{% endif %}
+	</h1>
+</div>
+
+<div class="row marketing">
+
+	<div class="col-lg-6">
+	<h4>Most Liked Categories</h4>
+		<p>
+		{% if categories %}
+		<ul>
+			{% for category in categories %}
+				<li>
+				<a href="{% url 'show_category' category.slug %}">{{ category.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+			<Strong>There are no categories present.</strong?
+		{% endif %}
+		</p>
+	</div>
+	
+	<div class="col-lg-6">
+	<h4>Most Liked Pages</h2>
+		<p>
+		{% if pages %}
+		<ul>
+			{% for page in pages %}
+				<li>
+				<a href="{{ page.url }}">{{ page.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+			<Strong>There are no pages present.</strong?
+		{% endif %}
+		</p>
+	</div>
+	
+</div>
+
+	<div>
+	<img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" /> 
+	</div>
+	
+	<div>
+	<p> visits: {{ visits }} </p>
+	</div>
+		{% endblock %}
